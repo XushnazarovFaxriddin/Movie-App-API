@@ -83,8 +83,8 @@ namespace movie_API.Controllers
             string path = Path.Combine(_env.WebRootPath, fileName);
             FileStream fileStream = System.IO.File.Open(path, FileMode.Create);
             await file.OpenReadStream().CopyToAsync(fileStream);
-            if (!string.IsNullOrEmpty(movie.Image))
-                System.IO.File.Delete(Path.Combine(_env.WebRootPath, movie.Image));
+            if (!string.IsNullOrEmpty(movie.Video))
+                System.IO.File.Delete(Path.Combine(_env.WebRootPath, movie.Video));
             await fileStream.FlushAsync();
             fileStream.Close();
             movie.Video = fileName;
